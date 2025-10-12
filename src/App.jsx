@@ -1,16 +1,15 @@
-import { useState } from 'react'
+//import { useState } from 'react'
 
-import './App.css'
-import { Layout } from './layout'
+import "./App.css";
+import { Layout } from "./layout";
 
 function App() {
-  
-
+  document.title = "Weather Dashboard";
   return (
     <>
-      <Layout/>
+      <Layout />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
