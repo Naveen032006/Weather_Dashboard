@@ -1,10 +1,12 @@
-//import { useState } from 'react'
+import { useEffect } from "react";
 
 import "./App.css";
 import { Layout } from "./layout";
 
 function App() {
-  document.title = "Weather Dashboard";
+  useEffect(() => {
+    document.title = "Weather Dashboard";
+  }, []);
   return (
     <>
       <Layout />

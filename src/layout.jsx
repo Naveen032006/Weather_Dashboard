@@ -19,7 +19,7 @@ export function Layout() {
           gap: 4,
         }}
       >
-        <Forecast mode="dark" width="20%" id="days" />
+        <Forecast mode="light" width="20%" id="days" />
         <Forecast mode="light" width="60%" id="hour" />
       </Box>
     </>

@@ -15,7 +15,6 @@ function WeatherCard({ time, image1, image2, temp, speed, color1, color2 }) {
         <ul
           style={{
             listStyle: "none",
-            margin: "5%",
             padding: "10%",
             background: `linear-gradient(45deg,${color1},${color2})`,
             borderRadius: "20px",
@@ -24,6 +23,8 @@ function WeatherCard({ time, image1, image2, temp, speed, color1, color2 }) {
             justifyContent: "center",
             alignItems: "center",
             boxShadow: "0px 4px 10px rgba(0,0,0,0.2)",
+            height: "12rem",
+            margin: "0",
           }}
         >
           <li>{time}</li>
