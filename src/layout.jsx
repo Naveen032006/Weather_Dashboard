@@ -3,6 +3,7 @@ import { Time } from "./components/time";
 import { Weather } from "./components/weather";
 import Forecast from "./components/Forecast";
 import { useState, useEffect } from "react";
+import { SearchBar } from "./searchbar";
 
 export function Layout() {
   const apikey = "016692c1b92044a0b25163019251310";
@@ -22,22 +23,29 @@ export function Layout() {
   console.log(value?.current);
   return value ? (
     <>
-      <Box sx={{ display: "flex", justifyContent: "center", gap: 4 }}>
-        <Time />
-        <Weather detail={value} />
-      </Box>
-      <Box
-        sx={{
-          margin: "20px",
-          display: "flex",
-          alignContent: "center",
-          justifyContent: "center",
-          gap: 4,
+      <div
+        style={{
+          background: "linear-gradient(to bottom, #4f4f4fff, #d3d0d0ff)",
         }}
       >
-        <Forecast mode="light" width="20%" id="days" detail={value} />
-        <Forecast mode="light" width="60%" id="hour" detail={value} />
-      </Box>
+        <SearchBar />
+        <Box sx={{ display: "flex", justifyContent: "center", gap: 4 }}>
+          <Time />
+          <Weather detail={value} />
+        </Box>
+        <Box
+          sx={{
+            margin: "20px",
+            display: "flex",
+            alignContent: "center",
+            justifyContent: "center",
+            gap: 4,
+          }}
+        >
+          <Forecast mode="light" width="20%" id="days" detail={value} />
+          <Forecast mode="light" width="60%" id="hour" detail={value} />
+        </Box>
+      </div>
     </>
   ) : (
     <h1>Data retrieving</h1>
