@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
 import WeatherCard from "./WeatherCard";
 import TextCard from "./TextCard";
 
-function Forecast({ mode, width, id }) {
-  const apikey = "016692c1b92044a0b25163019251310";
-  const city = "chennai";
-  const [value, setvalue] = useState([]);
+function Forecast({ mode, width, id, detail }) {
+  console.log(detail);
   const datas2 = [
     {
-      image: "./src/assets/cloudy (1).png",
+      image: "",
       temp: "27°C",
       date: " Friday,1 Sep",
     },
@@ -80,17 +77,7 @@ function Forecast({ mode, width, id }) {
       color2: "#F6FAD9",
     },
   ];
-  const fetchdata = () => {
-    fetch(
-      `http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${city}&aqi=no`
-    )
-      .then((response) => response.json())
-      .then((data) => setvalue(data));
-  };
-  useEffect(() => {
-    fetchdata();
-  }, []);
-  console.log(value);
+
   return (
     <>
       <div
