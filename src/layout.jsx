@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 export function Layout() {
   const apikey = "016692c1b92044a0b25163019251310";
-  const city = "Chennai";
+  const city = "Switzerland";
   const [value, setvalue] = useState(null);
   const fetchdata = () => {
     fetch(
