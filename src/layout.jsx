@@ -7,7 +7,7 @@ import { SearchBar } from "./searchbar";
 
 export function Layout() {
   const apikey = "016692c1b92044a0b25163019251310";
-  const city = "Switzerland";
+  const city = "Chennai";
   const [value, setvalue] = useState(null);
   const fetchdata = () => {
     fetch(
@@ -30,7 +30,7 @@ export function Layout() {
       >
         <SearchBar />
         <Box sx={{ display: "flex", justifyContent: "center", gap: 4 }}>
-          <Time />
+          <Time detail={value}/>
           <Weather detail={value} />
         </Box>
         <Box
