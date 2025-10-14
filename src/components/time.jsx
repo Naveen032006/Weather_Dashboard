@@ -29,15 +29,16 @@ export function Time(){
     textAlign: "center",
     p: { xs: 3, sm: 4, md: 5 },
     width: { xs: "90%", sm: "45%", md: "20%" },
+    height:"auto",
     backgroundColor: "#D9D9D9",
     borderRadius: "30px",
   }} >
             <Typography variant="h4"sx={{fontWeight:"bold",paddingBottom:"20px"}} >Athens</Typography>
             
-            <Typography variant="h2" sx={{fontWeight:"bold"}}>{mainTime}</Typography>
+            <Typography variant="h2" sx={{fontWeight:"bold", fontSize:"3.5rem",paddingTop:"1rem",paddingBottom:"1rem" }}>{mainTime}</Typography>
             
            
-            <Typography variant="subtitle2" sx={{fontWeight:"bold"}}>{formatDate}</Typography>
+            <Typography variant="subtitle1" sx={{fontWeight:"bold"}}>{formatDate}</Typography>
         </Paper >
         
         
