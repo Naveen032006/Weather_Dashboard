@@ -6,8 +6,10 @@ import { useState, useEffect } from "react";
 import { SearchBar } from "./searchbar";
 
 export function Layout() {
+  const [theme, setTheme] = useState("dark");
   const apikey = "016692c1b92044a0b25163019251310";
-  const city = "Chennai";
+  const [location, setLocation] = useState("Chennai");
+  const city = location;
   const [value, setvalue] = useState(null);
   const fetchdata = () => {
     fetch(
@@ -19,8 +21,8 @@ export function Layout() {
   };
   useEffect(() => {
     fetchdata();
-  }, []);
-  console.log(value?.current);
+  }, [location]);
+  console.log(location);
   return value ? (
     <>
       <div
@@ -28,10 +30,14 @@ export function Layout() {
           background: "linear-gradient(to bottom, #4f4f4fff, #d3d0d0ff)",
         }}
       >
-        <SearchBar />
+        <SearchBar
+          setLocation={setLocation}
+          theme={theme}
+          setTheme={setTheme}
+        />
         <Box sx={{ display: "flex", justifyContent: "center", gap: 4 }}>
-          <Time detail={value}/>
-          <Weather detail={value} />
+          <Time detail={value} mode={theme} />
+          <Weather mode={theme} detail={value} />
         </Box>
         <Box
           sx={{
@@ -42,8 +48,8 @@ export function Layout() {
             gap: 4,
           }}
         >
-          <Forecast mode="light" width="20%" id="days" detail={value} />
-          <Forecast mode="light" width="60%" id="hour" detail={value} />
+          <Forecast mode={theme} width="20%" id="days" detail={value} />
+          <Forecast mode={theme} width="60%" id="hour" detail={value} />
         </Box>
       </div>
     </>

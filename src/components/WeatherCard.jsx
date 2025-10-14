@@ -1,6 +1,6 @@
 import React from "react";
 
-function WeatherCard({ time, image1, image2, temp, speed, color1, color2 }) {
+function WeatherCard({ detail, color1, color2, image2, index }) {
   return (
     <>
       <div
@@ -27,11 +27,14 @@ function WeatherCard({ time, image1, image2, temp, speed, color1, color2 }) {
             margin: "0",
           }}
         >
-          <li>{time}</li>
-          <img src={image1} style={{ maxWidth: "7rem", maxHeight: "7rem" }} />
-          <li>{temp}</li>
+          <li>{index}</li>
+          <img
+            src={detail.forecast.forecastday[0].hour[index].condition.icon}
+            style={{ maxWidth: "7rem", maxHeight: "7rem" }}
+          />
+          <li>{detail.forecast.forecastday[0].hour[index].temp_c}</li>
           <img src={image2} style={{ maxWidth: "3rem", maxHeight: "2rem" }} />
-          <li>{speed}</li>
+          <li>{detail.forecast.forecastday[0].hour[index].wind_kph}</li>
         </ul>
       </div>
     </>

@@ -10,7 +10,9 @@ import {
 import Switch from "@mui/material/Switch";
 import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import SearchIcon from "@mui/icons-material/Search";
-export function SearchBar() {
+import { useState } from "react";
+export function SearchBar({ setLocation, theme, setTheme }) {
+  const [city, setCity] = useState("");
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
     height: 34,
@@ -79,14 +81,27 @@ export function SearchBar() {
         }}
       >
         <FormControlLabel
-          control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
-          label="MUI switch"
+          control={
+            <MaterialUISwitch
+              sx={{ m: 1 }}
+              checked={theme === "dark"}
+              onChange={() => {
+                setTheme(theme === "light" ? "dark" : "light");
+              }}
+            />
+          }
+          label="Theme"
         />
         <Stack direction="row" spacing={1} width="50%">
           <InputBase
             placeholder="enter your prefered city"
+            value={city}
+            onChange={(e) => {
+              setCity(e.target.value);
+            }}
             sx={{
-              backgroundColor: "#9c9c9ce4",
+              backgroundColor: theme == "light" ? "#D9D9D9" : "#1E1E1E",
+              color: theme == "dark" ? "#D9D9D9" : "#1E1E1E",
               border: "1px solid black",
               width: "60%",
               borderRadius: "30px",
@@ -98,6 +113,10 @@ export function SearchBar() {
             size="medium"
             variant="contained"
             sx={{ backgroundColor: "#6c868dff", borderRadius: "20px" }}
+            onClick={() => {
+              setLocation(city);
+              setCity("");
+            }}
           >
             {" "}
             search

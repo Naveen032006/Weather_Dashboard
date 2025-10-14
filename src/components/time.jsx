@@ -1,7 +1,7 @@
 import { Box, Paper, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export function Time({ detail }) {
+export function Time({ detail, mode }) {
   const [time, settime] = useState(new Date());
   useEffect(() => {
     const timer = setInterval(() => {
@@ -30,13 +30,17 @@ export function Time({ detail }) {
           p: { xs: 3, sm: 4, md: 5 },
           width: { xs: "90%", sm: "45%", md: "20%" },
           height: "auto",
-          backgroundColor: "#D9D9D9",
+          backgroundColor: mode == "light" ? "#D9D9D9" : "#1E1E1E",
           borderRadius: "30px",
         }}
       >
         <Typography
           variant="h4"
-          sx={{ fontWeight: "bold", paddingBottom: "20px" }}
+          sx={{
+            fontWeight: "bold",
+            paddingBottom: "20px",
+            color: mode == "dark" ? "whitesmoke" : "black",
+          }}
         >
           {detail.location.name}
         </Typography>
@@ -48,12 +52,19 @@ export function Time({ detail }) {
             fontSize: "3.5rem",
             paddingTop: "1rem",
             paddingBottom: "1rem",
+            color: mode == "dark" ? "whitesmoke" : "black",
           }}
         >
           {mainTime}
         </Typography>
 
-        <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
+        <Typography
+          variant="subtitle1"
+          sx={{
+            fontWeight: "bold",
+            color: mode == "dark" ? "whitesmoke" : "black",
+          }}
+        >
           {formatDate}
         </Typography>
       </Paper>

@@ -126,7 +126,14 @@ function Forecast({ mode, width, id, detail }) {
               }}
             >
               {datas.map((data, index) => (
-                <WeatherCard key={index} {...data} />
+                <WeatherCard
+                  key={index}
+                  detail={detail}
+                  color1="#F88508"
+                  color2="#F6FAD9"
+                  image2="./src/assets/direction.png"
+                  index={index}
+                />
               ))}
             </div>
           </>
