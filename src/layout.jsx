@@ -2,25 +2,9 @@ import { Box } from "@mui/material";
 import { Time } from "./components/time";
 import { Weather } from "./components/weather";
 import Forecast from "./components/Forecast";
-import { useState, useEffect } from "react";
 
 export function Layout() {
-  const apikey = "016692c1b92044a0b25163019251310";
-  const city = "Chennai";
-  const [value, setvalue] = useState(null);
-  const fetchdata = () => {
-    fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${city}&aqi=no`
-    )
-      .then((response) => response.json())
-      .then((data) => setvalue(data))
-      .catch((error) => console.log(error));
-  };
-  useEffect(() => {
-    fetchdata();
-  }, []);
-  console.log(value?.current);
-  return value ? (
+  return (
     <>
       <Box sx={{ display: "flex", justifyContent: "center", gap: 4 }}>
         <Time />
@@ -39,7 +23,5 @@ export function Layout() {
         <Forecast mode="light" width="60%" id="hour" />
       </Box>
     </>
-  ) : (
-    <h1>Data retrieving</h1>
   );
 }
