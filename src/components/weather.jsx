@@ -5,6 +5,7 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { Iconbox1 } from "./weather1";
 
 export function Weather({ mode, detail }) {
+  
   return (
     <Paper
       elevation={7}

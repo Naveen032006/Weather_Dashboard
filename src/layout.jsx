@@ -2,10 +2,12 @@ import { Box } from "@mui/material";
 import { Time } from "./components/time";
 import { Weather } from "./components/weather";
 import Forecast from "./components/Forecast";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { SearchBar } from "./searchbar";
+import { Loading } from "./loading";
 
 export function Layout() {
+  
   const [theme, setTheme] = useState("dark");
   const apikey = "016692c1b92044a0b25163019251310";
   const [location, setLocation] = useState("Chennai");
@@ -54,6 +56,6 @@ export function Layout() {
       </div>
     </>
   ) : (
-    <h1>Data retrieving</h1>
+    <Loading/>
   );
 }
