@@ -5,7 +5,6 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { Iconbox1 } from "./weather1";
 
 export function Weather({ mode, detail }) {
-  
   return (
     <Paper
       elevation={7}
@@ -143,7 +142,7 @@ export function Weather({ mode, detail }) {
               sx={{
                 fontWeight: "600",
                 textAlign: "center",
-                padding: "1rem",
+                padding: "0",
                 color: mode == "dark" ? "whitesmoke" : "black",
               }}
             >

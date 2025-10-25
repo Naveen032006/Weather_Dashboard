@@ -9,17 +9,36 @@ import { Loading } from "./loading";
 export function Layout() {
   const [theme, setTheme] = useState("dark");
   const apikey = "016692c1b92044a0b25163019251310";
-  const [location, setLocation] = useState("Chennai");
-  const city = location;
+  const [location, setLocation] = useState({
+    city: "Chennai",
+    lat: null,
+    lon: null,
+  });
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [value, setvalue] = useState(null);
   const fetchdata = () => {
+    let query;
+    if (location.city) {
+      query = location.city;
+    } else if (location.lat && location.lon) {
+      query = `${location.lat},${location.lon}`;
+    } else {
+      query = "Chennai";
+    }
+
     fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${city}&days=5&aqi=no&alerts=no`
+      `https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${query}&days=5&aqi=no&alerts=no`
     )
       .then((response) => response.json())
-      .then((data) => setvalue(data))
-      .catch((error) => setError(error));
+      .then((data) => {
+        setvalue(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
   };
   useEffect(() => {
     fetchdata();
@@ -41,6 +60,8 @@ export function Layout() {
           }}
         >
           <SearchBar
+            loading={loading}
+            setLoading={setLoading}
             setLocation={setLocation}
             theme={theme}
             setTheme={setTheme}

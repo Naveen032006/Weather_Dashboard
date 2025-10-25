@@ -11,7 +11,29 @@ import Switch from "@mui/material/Switch";
 import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
-export function SearchBar({ setLocation, theme, setTheme }) {
+export function SearchBar({
+  loading,
+  setLoading,
+  setLocation,
+  theme,
+  setTheme,
+}) {
+  const getLocation = () => {
+    setLoading(true);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          setLocation((prev) => ({
+            ...prev,
+            lat: pos.coords.latitude,
+            lon: pos.coords.longitude,
+            city: null, // prioritize coordinates
+          }));
+        },
+        (err) => console.warn(err)
+      );
+    }
+  };
   const [city, setCity] = useState("");
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
@@ -110,12 +132,14 @@ export function SearchBar({ setLocation, theme, setTheme }) {
           />
           <Button
             startIcon={<SearchIcon fontSize="large" />}
+              loading={loading}
             size="medium"
             variant="contained"
             sx={{ backgroundColor: "#6c868dff", borderRadius: "20px" }}
             onClick={() => {
-              setLocation(city);
+              setLocation({ city: city, lat: null, lon: null });
               setCity("");
+              setLoading(true);
             }}
           >
             {" "}
@@ -126,16 +150,19 @@ export function SearchBar({ setLocation, theme, setTheme }) {
         <Button
           startIcon={<LocationSearchingIcon sx={{ color: "black" }} />}
           variant="contained"
+          loading={loading}
+
           sx={{
             borderRadius: "30px",
             color: "white",
             backgroundColor: "#3db133ff",
           }}
           size="small"
+          onClick={getLocation}
         >
-          {" "}
           current Location
         </Button>
+       
       </Paper>
     </>
   );
