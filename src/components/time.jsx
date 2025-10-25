@@ -2,7 +2,6 @@ import { Box, Paper, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export function Time({ detail, mode }) {
-   
   const [time, settime] = useState(new Date());
   useEffect(() => {
     const timer = setInterval(() => {
@@ -43,7 +42,7 @@ export function Time({ detail, mode }) {
             color: mode == "dark" ? "whitesmoke" : "black",
           }}
         >
-          {detail.location.name}
+          {detail?.location?.name || "Unknown Location"}
         </Typography>
 
         <Typography

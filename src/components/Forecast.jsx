@@ -2,81 +2,9 @@ import WeatherCard from "./WeatherCard";
 import TextCard from "./TextCard";
 
 function Forecast({ mode, width, id, detail }) {
-  console.log(detail);
-  const datas2 = [
-    {
-      image: "",
-      temp: "27°C",
-      date: " Friday,1 Sep",
-    },
-    {
-      image: "./src/assets/sun.png",
-      temp: "27°C",
-      date: " Friday,1 Sep",
-    },
-    {
-      image: "./src/assets/weather.png",
-      temp: "27°C",
-      date: " Friday,1 Sep",
-    },
-    {
-      image: "./src/assets/cloudy (2).png",
-      temp: "27°C",
-      date: " Friday,1 Sep",
-    },
-    {
-      image: "./src/assets/cloudy.png",
-      temp: "27°C",
-      date: " Friday,1 Sep",
-    },
-  ];
-  const datas = [
-    {
-      time: "12:00",
-      image1: "./src/assets/cloudy.png",
-      image2: "./src/assets/direction.png",
-      temp: "27°C",
-      speed: "3Km/h",
-      color1: "#F88508",
-      color2: "#F6FAD9",
-    },
-    {
-      time: "12:00",
-      image1: "./src/assets/cloudy (1).png",
-      image2: "./src/assets/direction.png",
-      temp: "27°C",
-      speed: "3Km/h",
-      color1: "#443D64",
-      color2: "#6582C6",
-    },
-    {
-      time: "12:00",
-      image1: "./src/assets/cloudy (2).png",
-      image2: "./src/assets/direction.png",
-      temp: "27°C",
-      speed: "3Km/h",
-      color1: "#F88508",
-      color2: "#F6FAD9",
-    },
-    {
-      time: "12:00",
-      image1: "./src/assets/sun.png",
-      image2: "./src/assets/direction.png",
-      temp: "27°C",
-      speed: "3Km/h",
-      color1: "#443D64",
-      color2: "#6582C6",
-    },
-    {
-      time: "12:00",
-      image1: "./src/assets/weather.png",
-      image2: "./src/assets/direction.png",
-      temp: "27°C",
-      speed: "3Km/h",
-      color1: "#F88508",
-      color2: "#F6FAD9",
-    },
-  ];
+  console.log(detail.forecast.forecastday[1]);
+  const datas2 = [0, 1, 2, 3, 4];
+  const hours = [0, 8, 12, 5, 23];
 
   return (
     <>
@@ -84,7 +12,6 @@ function Forecast({ mode, width, id, detail }) {
         style={{
           backgroundColor: mode == "dark" ? "#1E1E1E" : "#D9D9D9",
           minWidth: width,
-          height: "12%",
           color: mode == "dark" ? "whitesmoke" : "black",
           borderRadius: "20px",
           overflow: "auto",
@@ -104,8 +31,11 @@ function Forecast({ mode, width, id, detail }) {
               5 Days Forecast
             </h1>
             <div>
-              {datas2.map((data, index) => (
-                <TextCard key={index} {...data} />
+              {datas2.map((index) => (
+                <TextCard
+                  key={index}
+                  days={detail.forecast.forecastday[index]}
+                />
               ))}
             </div>
           </>
@@ -120,19 +50,18 @@ function Forecast({ mode, width, id, detail }) {
                 alignItems: "center",
                 backgroundColor: mode == "dark" ? "#1E1E1E" : "#D9D9D9",
                 borderRadius: "10px",
-                padding: "20px",
-                maxWidth: "1200px",
-                margin: "0 auto",
+                maxWidth: "1000px",
+                marginTop: "50px",
               }}
             >
-              {datas.map((data, index) => (
+              {hours.map((data, index) => (
                 <WeatherCard
                   key={index}
                   detail={detail}
                   color1="#F88508"
                   color2="#F6FAD9"
                   image2="./src/assets/direction.png"
-                  index={index}
+                  index={hours[index]}
                 />
               ))}
             </div>
