@@ -1,5 +1,4 @@
 import React from "react";
-import image2 from "/Weather_Dashboard/direction.png";
 
 function WeatherCard({ detail, color1, color2, index }) {
   const hourData = detail?.forecast?.forecastday?.[0]?.hour?.[index];
@@ -56,7 +55,7 @@ function WeatherCard({ detail, color1, color2, index }) {
           />
           <li>{hourData.temp_c}</li>
           <img
-            src={image2}
+            src="/Weather_Dashboard/direction.png"
             style={{
               maxWidth: "3rem",
               maxHeight: "2rem",
