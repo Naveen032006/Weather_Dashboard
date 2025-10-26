@@ -60,7 +60,6 @@ function Forecast({ mode, width, id, detail }) {
                   detail={detail}
                   color1="#F88508"
                   color2="#F6FAD9"
-                  image2="./src/assets/direction.png"
                   index={hours[index]}
                 />
               ))}
