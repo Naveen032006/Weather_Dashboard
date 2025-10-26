@@ -16,6 +16,7 @@ export function Layout() {
   });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [currloading, setCurLoading] = useState(true);
   const [value, setvalue] = useState(null);
   const fetchdata = () => {
     let query;
@@ -34,10 +35,12 @@ export function Layout() {
       .then((data) => {
         setvalue(data);
         setLoading(false);
+        setCurLoading(false);
       })
       .catch((error) => {
         setError(error);
         setLoading(false);
+        setCurLoading(false);
       });
   };
   useEffect(() => {
@@ -62,6 +65,8 @@ export function Layout() {
           <SearchBar
             loading={loading}
             setLoading={setLoading}
+            currloading={currloading}
+            setCurLoading={setCurLoading}
             setLocation={setLocation}
             theme={theme}
             setTheme={setTheme}

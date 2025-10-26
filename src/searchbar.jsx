@@ -14,12 +14,14 @@ import { useState } from "react";
 export function SearchBar({
   loading,
   setLoading,
+  currloading,
+  setCurLoading,
   setLocation,
   theme,
   setTheme,
 }) {
   const getLocation = () => {
-    setLoading(true);
+    setCurLoading(true);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (pos) => {
@@ -132,7 +134,7 @@ export function SearchBar({
           />
           <Button
             startIcon={<SearchIcon fontSize="large" />}
-              loading={loading}
+            loading={loading}
             size="medium"
             variant="contained"
             sx={{ backgroundColor: "#6c868dff", borderRadius: "20px" }}
@@ -150,8 +152,7 @@ export function SearchBar({
         <Button
           startIcon={<LocationSearchingIcon sx={{ color: "black" }} />}
           variant="contained"
-          loading={loading}
-
+          loading={currloading}
           sx={{
             borderRadius: "30px",
             color: "white",
@@ -162,7 +163,6 @@ export function SearchBar({
         >
           current Location
         </Button>
-       
       </Paper>
     </>
   );
