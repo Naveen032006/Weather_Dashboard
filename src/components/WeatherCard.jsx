@@ -1,5 +1,5 @@
 import React from "react";
-import image2 from "../assets/direction.png";
+import image2 from "/Weather_Dashboard/direction.png";
 
 function WeatherCard({ detail, color1, color2, index }) {
   const hourData = detail?.forecast?.forecastday?.[0]?.hour?.[index];
