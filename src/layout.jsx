@@ -8,7 +8,7 @@ import { Loading } from "./loading";
 
 export function Layout() {
   const [theme, setTheme] = useState("dark");
-  const apikey = import.meta.env.VITE_WEATHER_API_KEY;
+  const apikey = process.env.WEATHER_API_KEY;
   const [location, setLocation] = useState({
     city: "Chennai",
     lat: null,
