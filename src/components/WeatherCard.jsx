@@ -55,7 +55,7 @@ function WeatherCard({ detail, color1, color2, index }) {
           />
           <li>{hourData.temp_c}</li>
           <img
-            src="/Weather_Dashboard/direction.png"
+            src="/direction.png"
             style={{
               maxWidth: "3rem",
               maxHeight: "2rem",
