@@ -1,16 +1,64 @@
-<<<<<<< HEAD
-# React + Vite
+# Weather Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive weather dashboard built with React and the OpenWeather API, allowing users to search for any city and view real-time weather data, forecasts, and additional atmospheric information.
 
-Currently, two official plugins are available:
+## Features
+- Search functionality for any city worldwide
+- Display of real-time weather data (temperature, humidity, wind speed, pressure, UV index)
+- 5-day forecast with dynamic icons and temperature ranges
+- Responsive design
+- Error handling for invalid inputs and failed API responses
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- React.js – Frontend framework
+- Axios – API requests
+- OpenWeather API – Weather data source
+- CSS/Flexbox/Grid – Styling and layout
+- Vercel – Deployment platform
 
-## Expanding the ESLint configuration
+## Setup Guide
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# Weather_Dashboard
->>>>>>> 13718569e9aea46b1d64c0797a44de2545d0887f
+1. Clone the Repository
+   bash
+   git clone https://github.com/your-username/weather-dashboard.git
+   
+
+2. Navigate to the Project Directory
+   bash
+   cd weather-dashboard
+   
+
+3. Install Dependencies
+   bash
+   npm install
+   
+
+4. Set Up Environment Variables
+   Create a .env file in the project root and add your API key:
+   bash
+   REACT_APP_OPENWEATHER_API_KEY=your_api_key_here
+   
+
+5. Start the Development Server
+   bash
+   npm start
+   
+   The app will open automatically at http://localhost:3000.
+
+6. Build for Production (Optional)
+   bash
+   npm run build
+   
+
+## Deployment (Vercel)
+- Push the project to GitHub.
+- Connect the repository to [Vercel](https://vercel.com/).
+- Add environment variables in the Vercel dashboard.
+- Deploy directly from the main branch.
+
+## Usage
+- Enter a city name in the search bar to view current weather details.
+- Explore the 5-day forecast and additional weather metrics.
+
+## License
+This project is licensed under the MIT License. Feel free to modify and distribute it for educational or personal use
